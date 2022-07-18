@@ -1,4 +1,4 @@
-package raft
+package main
 
 //
 // Raft tests.
@@ -74,7 +74,7 @@ func TestReElection2A(t *testing.T) {
 	cfg.disconnect(leader2)
 	cfg.disconnect((leader2 + 1) % servers)
 	time.Sleep(2 * RaftElectionTimeout)
-
+	//fmt.Printf("???////////////////////////////////////////")
 	// check that the one connected server
 	// does not think it is the leader.
 	cfg.checkNoLeader()
@@ -1140,7 +1140,6 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 		for i := 0; i < nn; i++ {
 			cfg.rafts[sender].Start(rand.Int())
 		}
-
 		// let applier threads catch up with the Start()'s
 		if disconnect == false && crash == false {
 			// make sure all followers have caught up, so that

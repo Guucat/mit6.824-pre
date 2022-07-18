@@ -1,0 +1,2 @@
+1. Leader的nextIndex偶尔会超出自己Log长度
+2. RPC 没有失败后立即反复重试
